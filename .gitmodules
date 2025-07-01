@@ -1,0 +1,3 @@
+[submodule "content"]
+	path = content
+	url = git@github.com:AlexRumak/AlexRumak_DotCom_Content.git

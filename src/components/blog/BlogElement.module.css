@@ -1,0 +1,10 @@
+
+.blogElement {
+  background-color: var(--background-color);
+  grid-column: 2;
+  padding: 1rem;
+  border-radius: 10px 0 0 10px;
+  height: fit-content;
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}

@@ -1,8 +1,8 @@
-import './Footer.css';
+import styles from './Footer.module.css';
 
 function Footer() {
   return <>
-    <footer>
+    <footer className={styles.footer}>
       <p>© 2025 Alex Rumak</p>
     </footer>
   </>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+export function getStaticPaths() {
+
+  // Replace with logic to get all blog posts
+  const pages = [
+    { 
+      slug: 'test',
+      title: 'Test Post',
+      text: 'This is a test post for the blog.',
+    }
+  ];
+
+  return pages.map(({ slug, title, text }) => {
+    return {
+      params: { slug },
+      props: { title, text },
+    };
+  });
+}
+
+const { title, text } = Astro.props;
+---
+
+<BaseLayout title="| Blog Post">
+  <div>
+    {title}
+  </div>
+</BaseLayout>

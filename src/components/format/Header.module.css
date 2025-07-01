@@ -1,0 +1,51 @@
+
+.header {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter Variable', sans-serif;
+  font-size: 1.2em;
+  justify-content: center;
+  background-color: var(--background-color-main-transparent);
+  border-radius: 15px 15px 0 0;
+  width: 100%;;
+}
+
+.h1 {
+  color: var(--primary-accent-color-dark);
+  text-shadow: 0 0 2px var(--primary-accent-color);
+}
+
+.ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:visited {
+  color: inherit;
+}
+
+.nav a:hover {
+  background-color: var(--primary-accent-color);
+  box-shadow: 0 0 0 5px var(--primary-accent-color);
+  border-radius: 5px;
+}
+
+.nav a:active {
+  background-color: var(--primary-accent-color);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul li {
+  border-right: 1px solid var(--primary-bar-color);
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+.nav ul li:last-child {
+  border-right: none;
+}
+

@@ -1,6 +1,7 @@
 ---
-import Header from '../components/Header.tsx';
-import Footer from '../components/Footer.tsx';
+import Header from '../components/format/Header.tsx';
+import Footer from '../components/format/Footer.tsx';
+import './Styles.css';
 const { title } = Astro.props;
 ---
 
@@ -10,11 +11,15 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Alex Rumak - {title}</title>
+		<title>Alex Rumak {title}</title>
 	</head>
-  <Header />
-	<body>
-    <slot />
+	<body class="background">
+    <div class="website">
+      <Header />
+      <div class="content">
+        <slot />
+      </div>
+      <Footer />
+    </div>
 	</body>
-  <Footer />
 </html>
