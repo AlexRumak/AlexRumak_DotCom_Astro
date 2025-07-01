@@ -1,10 +1,13 @@
 import type { Key } from "react";
 import BlogElement from "./BlogElement.tsx";
 import styles from "./BlogList.module.css";
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 async function BlogList() {
   const blogPosts = await getCollection('blog');
+  blogPosts.sort((a, b) => {
+    return a.data.order - b.data.order;
+  })
 
   return (
     <div className={styles.blogListContainer}>
@@ -15,6 +18,7 @@ async function BlogList() {
         {
           blogPosts.map((post) => (
             <BlogElement
+              key={post.data.id as Key}
               title={post.data.title}
               date={post.data.createdDate?.toLocaleDateString() || 'Unknown Date'}
               link={`/blog/${post.data.slug}`}

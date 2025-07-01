@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import { getCollection, getEntry, render} from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('blog');
+
+  return pages.map((page) => {
+    return {params: {
+      blogPost: page.data.slug,
+    }, 
+    props: {
+      title: page.data.title,
+      id: page.data.id,
+    }}});
+}
+
+const { blogPost } = Astro.params;
+const { title, id } = Astro.props;
+
+const formattedTitle = title ? `| ${title}` : '';
+
+const entry = await getEntry('blog', id);
+
+if (!entry) {
+  throw new Error(`Blog post with id ${id} not found.`);
+}
+
+const { Content, headings } = await render(entry);
+---
+
+<BaseLayout title={formattedTitle}>
+  <article>
+    <Content />
+  </article>
+</BaseLayout>

@@ -82,11 +82,10 @@ export function blogLoader(): Loader {
           return;
         }
 
-        const slug = fileName.replace(/\.md$/, '');
-
         const firstLine = lines[0];
         if (!firstLine.startsWith('#'))
         {
+          console.warn(`First line of the file does not start with a title: ${fileName}`);
           return;
         }
 
@@ -98,6 +97,7 @@ export function blogLoader(): Loader {
         const createdDate = metadata.CreatedDate ? new Date(metadata.CreatedDate) : undefined;
         const lastModifiedDate = metadata.LastModifiedDate ? new Date(metadata.LastModifiedDate) : undefined;
         const state = metadata.State || 'draft';
+        const order = metadata.Order ? parseInt(metadata.Order, 10) : undefined;
 
         if (state !== 'published') {
           console.log(`Skipping unpublished post: ${fileName}`);
@@ -109,12 +109,13 @@ export function blogLoader(): Loader {
           data: {
             id: id,
             author: 'Alex Rumak',
-            slug: slug,
+            slug: id,
             title: title,
             createdDate: createdDate,
             lastModifiedDate: lastModifiedDate,
             tags: tags,
             content: content,
+            order: order,
           },
           rendered: await renderMarkdown(content),
         });
@@ -127,7 +128,8 @@ export function blogLoader(): Loader {
       title: z.string(),
       tags: z.array(z.string()).optional(),
       createdDate: z.date().optional(),
-      lastModifiedDate: z.date().optional()
+      lastModifiedDate: z.date().optional(),
+      order: z.number(),
     })
   };
 }
