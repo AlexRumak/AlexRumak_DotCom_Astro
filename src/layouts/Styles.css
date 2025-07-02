@@ -10,6 +10,7 @@
   --secondary-accent-color: oklch(0.9169 0.1533 97.86);
   --tertiary-accent-color: oklch(0.7108 0.193 4.78);
   --primary-bar-color: #ccc;
+  --primary-bar-color-dark: #9c9c9c;
 
   /* font-sizes */
   --main-text-size: 1.0rem;
@@ -38,12 +39,12 @@
   flex-direction: column;
   justify-self: center;
   width: 90vw;
+  min-width: 600px;
   max-width: 1000px;
   min-height: 95vh;
   background-color: var(--background-color-main-transparent);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: fit-content;
 }
 
 .website > *:nth-last-child(2) {

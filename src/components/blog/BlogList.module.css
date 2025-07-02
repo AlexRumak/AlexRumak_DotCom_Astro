@@ -20,7 +20,8 @@
   padding: 0.5rem;
   margin: 0;
   vertical-align: middle;
-
+  padding-left: 1rem;
+  
   /* Items within */
   display: flex;
   align-items: center;

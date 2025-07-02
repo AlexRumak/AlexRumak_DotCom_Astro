@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { getCollection, getEntry, render} from 'astro:content';
+import BlogHeader from '../../components/blog/BlogHeader.tsx';
 
 export async function getStaticPaths() {
   const pages = await getCollection('blog');
@@ -12,11 +13,12 @@ export async function getStaticPaths() {
     props: {
       title: page.data.title,
       id: page.data.id,
+      tags: page.data.tags,
     }}});
 }
 
 const { blogPost } = Astro.params;
-const { title, id } = Astro.props;
+const { title, id, tags } = Astro.props;
 
 const formattedTitle = title ? `| ${title}` : '';
 
@@ -27,10 +29,24 @@ if (!entry) {
 }
 
 const { Content, headings } = await render(entry);
+
+let defaultTags = tags || [];
 ---
 
 <BaseLayout title={formattedTitle}>
-  <article>
+  <article class="blogPost">
+    <BlogHeader title={title} tags={defaultTags} />
     <Content />
   </article>
 </BaseLayout>
+
+<style>
+  .blogPost {
+    margin-top: 0.5rem;
+    padding: 3rem;
+    padding-top: 1rem;
+    background-color: var(--background-color);
+    border-radius: 10px 10px 10px 10px;
+    height: fit-content;
+  }
+</style>

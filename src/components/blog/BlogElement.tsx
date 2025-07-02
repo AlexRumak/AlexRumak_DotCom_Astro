@@ -1,4 +1,5 @@
 import styles from './BlogElement.module.css';
+import Tags from './Tags.tsx';
 
 type AppProps = {
   title: string;
@@ -7,33 +8,15 @@ type AppProps = {
   tags: string[];
 }
 
-type TagProps = {
-  tags: string[];
-}
-
-function Tags(props: TagProps) {
-  // if not last element, add a comma
-
-  return <p><span className={styles.span}>Tags</span>
-    {
-      props.tags.map((tag, index) => {      
-        return <>
-          <span className={styles.tag} key={tag}>{tag}</span>
-          {index != props.tags.length - 1 ? ' ' : ''}
-        </>;
-      })
-    }
-  </p>;
-}
-
 function BlogElement(props: AppProps) {
   return <>
       <li className={styles.blogElement}>
         <a href={props.link} className={styles.link}>
-          <h3 className={styles.h3}>{props.title}</h3>
-          <Tags tags={props.tags} />
-          <div className={styles.lineOne}>
+          <div className={styles.blogHeader}>
+            <h3 className={styles.h3}>{props.title}</h3>
+            <span>{props.date}</span>
           </div>
+          <Tags tags={props.tags} />
         </a>
       </li>
   </>

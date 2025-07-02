@@ -1,9 +1,13 @@
 import styles from './ContactMe.module.css';
 
 function ContactMe() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert('Test');
+  }
 
   return <>
-    <form>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <h2 className={styles.h2}>Contact Me</h2>
       <div className={styles.formGroup}>
         <label htmlFor="name">Name:</label>
@@ -19,7 +23,7 @@ function ContactMe() {
       </div>
       <button type="submit" className={styles.submitButton}>Send</button>
     </form>
-  </>
+  </>;
 }
 
 export default ContactMe;

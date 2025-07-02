@@ -103,6 +103,9 @@ export function blogLoader(): Loader {
           console.log(`Skipping unpublished post: ${fileName}`);
           return;
         }
+
+        // remove header from content
+        const replacedContent = content.replace(/^[#].*[\n\r]/, '');
         
         store.set({
           id: id,
@@ -117,7 +120,7 @@ export function blogLoader(): Loader {
             content: content,
             order: order,
           },
-          rendered: await renderMarkdown(content),
+          rendered: await renderMarkdown(replacedContent),
         });
       });
     },
