@@ -1,20 +1,27 @@
-import AboutMe from './content/AboutMe.tsx';
+import styles from "./Main.module.css";
+import AboutMe from "./content/AboutMe.tsx";
+import ContactMe from "./content/ContactMe.tsx";
 
 function Main() {
-  return <>
-    <div className='maincontainer'>
-      <article className='article'>
-        <h2 className="h2">Welcome to my website</h2>
-        <p>This is a simple Astro site to showcase my projects and blog posts.</p>
-        <p>Feel free to explore the links in the header.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis magnam commodi facere qui amet magni, inventore nulla dignissimos, ipsa dolor fuga deleniti ratione consequuntur ullam sequi obcaecati nam unde harum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis magnam commodi facere qui amet magni, inventore nulla dignissimos, ipsa dolor fuga deleniti ratione consequuntur ullam sequi obcaecati nam unde harum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis magnam commodi facere qui amet magni, inventore nulla dignissimos, ipsa dolor fuga deleniti ratione consequuntur ullam sequi obcaecati nam unde harum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis magnam commodi facere qui amet magni, inventore nulla dignissimos, ipsa dolor fuga deleniti ratione consequuntur ullam sequi obcaecati nam unde harum.</p> 
-      </article>
-      <AboutMe />
-    </div>
-  </>
+  return (
+    <>
+      <div className={styles.mainContainer}>
+        <div className={styles.mainColumn}>
+          <article className={styles.article}>
+            <h2 className={styles.h2}>Welcome to my website</h2>
+            <p>This page is under construction. Please explore around while we work on building it up.</p>
+            <p>Do note :) It will probably be broken somewhere haha.</p>
+          </article>
+          <div className={styles.article}>
+            <ContactMe />
+          </div>
+        </div>
+        <div className={styles.sideColumn}>
+          <AboutMe />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Main;

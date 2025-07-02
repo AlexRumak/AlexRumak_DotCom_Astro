@@ -1,6 +1,6 @@
-.aside {
+.aside
+{
   background-color: var(--background-color);
-  grid-column: 2;
   padding: 1rem;
   border-radius: 0 10px 10px 0;
   height: fit-content;

@@ -49,3 +49,14 @@
   border-right: none;
 }
 
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+  }
+
+  .header > * {
+    margin-bottom: 0;
+  }
+}

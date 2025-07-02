@@ -4,6 +4,7 @@
   --background-color: oklch(0.9821 0 0);
   --background-color-main: oklch(0.9521 0 0);
   --background-color-main-transparent: oklch(95.213% 0.00011 271.152 / 0.707);
+  --background-color-dark: oklch(0.91 0 0); 
   --primary-accent-color: oklch(0.6636 0.1383 245.42);
   --primary-accent-color-dark: oklch(0.6636 0.1383 245.42); 
   --secondary-accent-color: oklch(0.9169 0.1533 97.86);
@@ -36,14 +37,13 @@
   display: flex;
   flex-direction: column;
   justify-self: center;
-  justify-content: center;
-  align-items: center;
   width: 90vw;
   max-width: 1000px;
   min-height: 95vh;
   background-color: var(--background-color-main-transparent);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: fit-content;
 }
 
 .website > *:nth-last-child(2) {
@@ -51,26 +51,7 @@
 }
 
 .content {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.maincontainer {
-  grid-template-columns: 4fr 3fr;
-  margin-top: 0.5rem;
-
-  display: grid;
-  gap: 0.5rem;
-}
-
-.h2 {
-  font-size: 2rem;
-  border-bottom: var(--primary-bar-color) 1px solid;
-}
-
-.article {
-  padding: 1rem;
-  grid-column: 1;
-  background-color: var(--background-color);
-  border-radius: 10px 0px 0px 10px;
-}

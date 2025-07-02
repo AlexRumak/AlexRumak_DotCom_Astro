@@ -5,16 +5,32 @@ import AboutMe from "../components/content/AboutMe.tsx";
 ---
 
 <BaseLayout title="| Blog">
-  <div class="maincontainer">
-    <BlogList />
-    <AboutMe />
+  <div class="mainContainer">
+    <div class="mainColumn">
+      <BlogList />
+    </div>
+    <div class="sideColumn">
+      <AboutMe />
+    </div>
   </div>
 </BaseLayout>
 
 <style>
-  .blogPage {
+  .mainContainer {
     display: grid;
     grid-template-columns: 4fr 3fr;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .mainColumn {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sideColumn {
+    grid-column: 2;
   }
 </style>
 

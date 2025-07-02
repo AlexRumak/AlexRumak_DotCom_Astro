@@ -12,7 +12,7 @@ async function BlogList() {
   return (
     <div className={styles.blogListContainer}>
       <div className={styles.blogHeader}>
-        <h2 className={styles.h2}>Blog List:</h2>
+        <h2 className={styles.h2}>Blog List</h2>
       </div>
       <ul className={styles.blogList}>
         {
