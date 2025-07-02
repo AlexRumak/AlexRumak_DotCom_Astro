@@ -1,5 +1,5 @@
 import styles from './BlogElement.module.css';
-import Tags from './Tags.tsx';
+import Tags from '../Tags.tsx';
 
 type AppProps = {
   title: string;

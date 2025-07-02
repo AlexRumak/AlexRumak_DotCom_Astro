@@ -1,5 +1,5 @@
 import syles from './BlogHeader.module.css';
-import Tags from './Tags.tsx';
+import Tags from '../Tags.tsx';
 
 type HeaderProps = {
   title: string;

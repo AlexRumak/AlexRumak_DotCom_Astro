@@ -1,18 +1,18 @@
-
 .header {
   display: flex;
   align-items: center;
   font-family: 'Inter Variable', sans-serif;
   font-size: 1.2em;
-  justify-content: center;
+  justify-content: space-between;
   background-color: var(--background-color-main-transparent);
   border-radius: 15px 15px 0 0;
-  width: 100%;;
+  width: 100%;
 }
 
 .h1 {
   color: var(--primary-accent-color-dark);
   text-shadow: 0 0 2px var(--primary-accent-color);
+  padding-left: 2.0rem;
 }
 
 .ul {
