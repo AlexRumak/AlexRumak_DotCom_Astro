@@ -9,10 +9,9 @@ function Tags(props: TagProps) {
 
   return <p className={styles.p}><span className={styles.span}>Tags</span>
     {
-      props.tags.map((tag, index) => {      
+      props.tags.map((tag) => {      
         return <>
           <span className={styles.tag} key={tag}>{tag}</span>
-          {index != props.tags.length - 1 ? ' ' : ''}
         </>;
       })
     }

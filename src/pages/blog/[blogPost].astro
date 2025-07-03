@@ -50,3 +50,42 @@ let defaultTags = tags || [];
     height: fit-content;
   }
 </style>
+
+<style is:global>
+  .blogPost img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* TODO: Swap with a fancy font */
+  .blogPost blockquote {
+    color: var(--accent-text-color);
+    background-color: var(--accent-text-background-color);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(1.2rem, 2rem, 4vw);
+    font-weight: 600;
+    float: right;
+    width: 40%;
+    margin: 0 0.25rem;
+    padding: 0 0.25rem;
+    border-left: 3px solid var(--primary-bar-color);
+    
+  }
+
+  @media (max-width: 768px) {
+   .blogPost blockquote { 
+      float: none;
+      width: 100%;
+      margin: 1rem 0;
+      font-size: clamp(1.1rem, 1.5rem, 3vw);
+    }
+  }
+
+  .blogPost blockquote p {
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+</style>

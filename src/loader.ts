@@ -57,6 +57,38 @@ function extractMetadata(lines: string[], fileName: string): { [key: string]: st
   return metadata;
 }
 
+// Return markdown image full paths
+function extractImages(lines: string[], basePath: string): string[] {
+  const images: string[] = [];
+
+  const startImage = "![";
+  const endImage = "](";
+  const startImagePath = "](./";
+  const endImagePath = ")";
+
+  for (const line of lines)
+  {
+    if (line.includes(startImage) && line.includes(endImage) && line.includes(startImagePath) && line.includes(endImagePath))
+    {
+      const endIndex = line.indexOf(endImage);
+      const pathStartIndex = line.indexOf(startImagePath, endIndex) + startImagePath.length;
+      const pathEndIndex = line.indexOf(endImagePath, pathStartIndex);
+      const imagePath = line.substring(pathStartIndex, pathEndIndex).trim();
+
+      if (imagePath)
+      {
+        images.push(`${imagePath}`);
+      }
+    }
+  }
+
+  return images;
+}
+
+function replaceRelativePathsWithAssetPath(contents: string): string {
+  return contents.replaceAll('](./', '](/assets/blog/'); // Should work in 99.999999% of cases.
+}
+
 export function blogLoader(): Loader {
 
   const files = glob('./content/blog/**/*.md');
@@ -71,8 +103,6 @@ export function blogLoader(): Loader {
       response.forEach(async (filePath) => {
         const content = await readFile(filePath, 'utf-8');
         const lines = content.split('\n');
-
-        console.log(`Processing file: ${filePath}`);
 
         const fileName = filePath.split('/').pop();
 
@@ -104,9 +134,12 @@ export function blogLoader(): Loader {
           return;
         }
 
-        // remove header from content
-        const replacedContent = content.replace(/^[#].*[\n\r]/, '');
-        
+        // remove header from content - kind of hacky
+        let replacedContent = content.replace(/^[#].*[\n\r]/, '');
+        replacedContent = replaceRelativePathsWithAssetPath(replacedContent);
+       
+        const rendered = await renderMarkdown(replacedContent);
+
         store.set({
           id: id,
           data: {
@@ -120,7 +153,7 @@ export function blogLoader(): Loader {
             content: content,
             order: order,
           },
-          rendered: await renderMarkdown(replacedContent),
+          rendered: rendered,
         });
       });
     },
