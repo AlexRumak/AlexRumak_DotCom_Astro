@@ -7,7 +7,7 @@ type TagProps = {
 function Tags(props: TagProps) {
   // if not last element, add a comma
 
-  return <p className={styles.p}><span className={styles.span}>Tags</span>
+  return <div className={styles.p}><span className={styles.span}>Tags</span>
     {
       props.tags.map((tag) => {      
         return <>
@@ -15,7 +15,7 @@ function Tags(props: TagProps) {
         </>;
       })
     }
-  </p>;
+  </div>;
 }
 
 export default Tags;
