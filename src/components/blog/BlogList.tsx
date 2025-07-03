@@ -9,6 +9,30 @@ async function BlogList() {
     return a.data.order - b.data.order;
   })
 
+  function nextPage() {
+    // Logic to handle pagination
+    console.log("Next page not implemented yet");
+  }
+
+  function previousPage() {
+    console.log("Previous page not implemented yet");
+  }
+
+  let paginationControls = <></>;
+  if (blogPosts.length > 5) {
+    // paginate the blog posts to show only the first 5
+    paginationControls = <>
+      <div className={styles.paginationControls}>
+        <button className={styles.button} onClick={previousPage}>
+           &lt;
+        </button>
+        <button className={styles.button} onClick={nextPage}>
+           &gt;
+        </button>
+      </div>
+    </>
+  }
+
   return (
     <div className={styles.blogListContainer}>
       <div className={styles.blogHeader}>
@@ -26,6 +50,7 @@ async function BlogList() {
           ))
         }
       </ul>
+      {paginationControls}
     </div>
   )
 }

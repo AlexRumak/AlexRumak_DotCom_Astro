@@ -14,6 +14,7 @@
   --primary-bar-color-dark: #9c9c9c;
   --accent-text-color: oklch(75.293% 0.08779 242.089);
   --accent-text-background-color: oklch(95.213% 0.00011 271.152 / 0.797);
+  --selected-text-background-color: oklch(0.9221 0 0);
 
   /* font-sizes */
   --main-text-size: 1.0rem;
@@ -31,6 +32,7 @@
 html {
   min-height: 100%;
   height: fit-content;
+  scroll-behavior: smooth;
 }
 
 .background {
@@ -58,6 +60,14 @@ html {
   background-color: var(--background-color-main-transparent);
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .website {
+    width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
 .website > *:nth-last-child(2) {

@@ -1,23 +1,32 @@
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  border-left: var(--primary-bar-color) 1px solid;
+  padding-left: 0.5rem;
+}
+
+.tagLine {
+  display: flex;
+  align-items: baseline;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.tagIdentifier {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
 .tag {
   background-color: var(--background-color-dark);
   color: var(--tertiary-accent-color);
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
   white-space: nowrap;
+  margin-bottom: 0.25rem;
 }
 
 .tag:hover {
   box-shadow: 0 0 2px 2px var(--tertiary-accent-color);
-}
-
-.p {
-  margin: 0.5rem 0;
-  line-height: 2rem;
-}
-
-.span {
-  border-right: var(--primary-bar-color) 1px solid;
-  padding-right: 0.5rem;
-  margin-right: 0.5rem;
 }

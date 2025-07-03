@@ -7,13 +7,16 @@ type TagProps = {
 function Tags(props: TagProps) {
   // if not last element, add a comma
 
-  return <div className={styles.p}><span className={styles.span}>Tags</span>
+  return <div className={styles.tagLine}>
+    <div className={styles.tagIdentifier}>
+      Tags
+    </div>
     {
-      props.tags.map((tag) => {      
-        return <>
-          <span className={styles.tag} key={tag}>{tag}</span>
-        </>;
-      })
+      <div className={styles.tagContainer}>
+        {
+          props.tags.map((tag) => <span className={styles.tag} key={tag}>{tag}</span>)
+        }
+      </div>
     }
   </div>;
 }

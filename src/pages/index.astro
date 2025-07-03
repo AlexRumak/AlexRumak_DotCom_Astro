@@ -1,9 +1,61 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import Main from "../components/Main.tsx";
+import AboutMe from "../components/content/AboutMe";
+import ContactMe from "../components/content/ContactMe";
+import BlogList from "../components/blog/BlogList";
 ---
 
 <BaseLayout>
-	<Main />
+	<div slot="main" class="mainContainer">
+		<article class="mainCard">
+			<h2>Welcome to my website</h2>
+			<p>This page is under construction. Please explore around while we work on building it up.</p>
+			<p>Do note :) It will probably be broken somewhere haha.</p>
+		</article>
+		<div slot="main" class="mainCard">
+			<ContactMe />
+		</div>
+
+		<div class="sideCardContainer">
+			<BlogList />
+		</div>
+	</div>
+
+	<div slot="side" class="sideContainer">
+		<div class="sideCard">
+			<AboutMe />
+		</div>
+
+	</div>
 </BaseLayout>
 
+<style>
+
+	.mainContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.sideContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.mainCard {
+		background-color: var(--background-color);
+		border-radius: 10px 0 0 10px;
+		padding: 1rem;
+	}
+
+	.mainCard p {
+		margin-bottom: 0.5rem;
+	}
+
+	.sideCard {
+		background-color: var(--background-color);
+		border-radius: 0px 10px 10px 0;
+		padding: 1rem;
+	}
+</style>

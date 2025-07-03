@@ -2,37 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro"
 import BlogList from "../components/blog/BlogList.tsx";
 import AboutMe from "../components/content/AboutMe.tsx";
-
-const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title="| Blog">
-  <div class="mainContainer">
-    <div class="mainColumn">
-      <BlogList />
-    </div>
-    <div class="sideColumn">
-      <AboutMe />
-    </div>
-  </div>
+  <BlogList slot="main" />
+  <AboutMe slot="side" />
 </BaseLayout>
 
-<style>
-  .mainContainer {
-    display: grid;
-    grid-template-columns: 4fr 3fr;
-    margin-top: 0.5rem;
-    gap: 0.5rem;
-  }
 
-  .mainColumn {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sideColumn {
-    grid-column: 2;
-  }
-</style>
 
