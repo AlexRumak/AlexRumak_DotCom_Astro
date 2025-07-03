@@ -29,7 +29,7 @@
 }
 
 html {
-  min-height: 100%;;
+  min-height: 100%;
   height: fit-content;
 }
 
@@ -42,13 +42,15 @@ html {
       var(--background-image-blend) 100%),
     url('/background.jpeg') no-repeat;
   background-position: center top;
-}
 
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+}
 
 .website {
   display: flex;
   flex-direction: column;
-  justify-self: center;
   width: 90vw;
   min-width: 600px;
   max-width: 1000px;

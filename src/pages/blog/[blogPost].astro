@@ -52,9 +52,29 @@ let defaultTags = tags || [];
 </style>
 
 <style is:global>
+
+  .blogPost h1, .blogPost h2, .blogPost h3, .blogPost h4, .blogPost h5, .blogPost h6 {
+    color: var(--primary-text-color);
+    font-weight: 600;
+    margin: 0.5rem 0;
+    background-color: var(--background-color-main);
+    border-radius: 5px;
+    padding: 0.5rem;
+    box-shadow: 
+      -2rem 0px var(--background-color-main), 
+      1rem 0px var(--background-color-main);
+  }
+
   .blogPost img {
     max-width: 100%;
     height: auto;
+    border: 1px solid var(--primary-bar-color);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .blogPost pre {
+    border: 1px solid var(--primary-bar-color);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1); 
   }
 
   /* TODO: Swap with a fancy font */
@@ -69,7 +89,7 @@ let defaultTags = tags || [];
     margin: 0 0.25rem;
     padding: 0 0.25rem;
     border-left: 3px solid var(--primary-bar-color);
-    
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
