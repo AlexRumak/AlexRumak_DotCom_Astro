@@ -1,8 +1,8 @@
 import { defineCollection, z } from "astro:content";
 import { blogLoader } from "./loader.ts";
 
-const blog = defineCollection({
+const blogPosts = defineCollection({
   loader: blogLoader(),
 });
 
-export const collections = { blog };
+export const collections = { blogPosts };

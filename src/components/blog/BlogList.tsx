@@ -9,7 +9,7 @@ type BlogListProps = {
 }
 
 function BlogList(props: BlogListProps) {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
 
   const blogPosts = props.blogPosts || [];
 

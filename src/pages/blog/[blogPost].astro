@@ -5,7 +5,7 @@ import BlogHeader from '../../components/blog/BlogHeader.tsx';
 import TableOfContents from '../../components/blog/TableOfContents.tsx';
 
 export async function getStaticPaths() {
-  const pages = await getCollection('blog');
+  const pages = await getCollection('blogPosts');
 
   return pages.map((page) => {
     return {params: {
@@ -23,7 +23,7 @@ const { title, id, tags } = Astro.props;
 
 const formattedTitle = title ? `| ${title}` : '';
 
-const entry = await getEntry('blog', id);
+const entry = await getEntry('blogPosts', id);
 
 if (!entry) {
   throw new Error(`Blog post with id ${id} not found.`);
@@ -43,7 +43,7 @@ let defaultTags = tags || [];
 </BaseLayout>
 
 <style is:global>
-  
+
   .blogPost {
     margin-top: 0.5rem;
     padding: 3rem;
