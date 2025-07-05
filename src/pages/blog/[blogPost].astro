@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { getCollection, getEntry, render} from 'astro:content';
 import BlogHeader from '../../components/blog/BlogHeader.tsx';
+import TableOfContents from '../../components/blog/TableOfContents.tsx';
 
 export async function getStaticPaths() {
   const pages = await getCollection('blog');
@@ -30,65 +31,19 @@ if (!entry) {
 
 const { Content, headings } = await render(entry);
 
-// Table of Contents:
-const toc = headings.map((heading) => {
-  return {
-    text: heading.text,
-    slug: heading.slug,
-  };
-});
-
 let defaultTags = tags || [];
 ---
 
 <BaseLayout title={formattedTitle}>
   <article class="blogPost" slot="blog">
     <BlogHeader title={title} tags={defaultTags} />
-    <div class="tableOfContents">
-      <h3>Table of Contents</h3>
-      <ul>
-        {toc.map((item) => (
-          <li>
-            <a href={`#${item.slug}`}>{item.text}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <TableOfContents headings={headings} />
     <Content />
   </article>
 </BaseLayout>
 
 <style is:global>
-
-  .tableOfContents {
-    margin-top: 1rem;
-    border-bottom: 1px solid var(--primary-bar-color);
-  }
-
-  .tableOfContents li {
-    list-style: upper-roman;
-    margin: 0.5rem 0;
-    font-size: 1.3rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-
-  .tableOfContents li:nth-child(odd) {
-    box-shadow: 
-      inset 0 0 0 20px var(--accent-text-background-color),
-      -30px 0 var(--accent-text-background-color);
-  }
-
-  .tableOfContents li:hover {
-    box-shadow: 
-      inset 0 0 0 20px var(--selected-text-background-color),
-      -30px 0 var(--selected-text-background-color); 
-  }
-
-  .tableOfContents a {
-    text-decoration: none;
-  }
-
+  
   .blogPost {
     margin-top: 0.5rem;
     padding: 3rem;
@@ -101,7 +56,7 @@ let defaultTags = tags || [];
   .blogPost h1, .blogPost h2, .blogPost h3, .blogPost h4, .blogPost h5, .blogPost h6 {
     color: var(--primary-text-color);
     font-weight: 600;
-    margin: 0.5rem 0;
+    margin: 2.0rem 0 2.0rem 0;
     background-color: var(--background-color-main);
     border-radius: 5px;
     padding-top: 0.5rem;
@@ -111,10 +66,12 @@ let defaultTags = tags || [];
       1rem 0px var(--background-color-main),
       -2rem 2px var(--primary-bar-color),
       1rem 2px var(--primary-bar-color);
+    clear: both;
   }
 
   .blogPost {
     font-size: 1.1rem;
+    text-align: justify;
   }
 
   .blogPost img {
@@ -137,16 +94,24 @@ let defaultTags = tags || [];
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(1.2rem, 2rem, 4vw);
     font-weight: 600;
+
     float: right;
+
     width: 40%;
-    margin: 0 0.25rem;
-    padding: 0.5rem 0.25rem;
+    padding: 1.0rem 0.25rem;
     border-left: 3px solid var(--primary-bar-color);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    text-align: left;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2.0rem;
   }
 
   .blogPost p {
     padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .blogPost blockquote p {

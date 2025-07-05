@@ -2,10 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro"
 import BlogList from "../components/blog/BlogList.tsx";
 import AboutMe from "../components/content/AboutMe.tsx";
+
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
 ---
 
 <BaseLayout title="| Blog">
-  <BlogList slot="main" />
+  <BlogList slot="main" blogPosts={blogPosts} client:load />
   <AboutMe slot="side" />
 </BaseLayout>
 

@@ -14,6 +14,10 @@ export default defineConfig({
           {
             src: './content/**/*.png',
             dest: 'assets/blog/'
+          },
+          {
+            src: './content/**/*.gif',
+            dest: 'assets/blog/'
           }
         ]
       })

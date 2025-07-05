@@ -1,17 +1,28 @@
 import type { Key } from "react";
 import BlogElement from "./BlogElement.tsx";
 import styles from "./BlogList.module.css";
-import { getCollection } from 'astro:content';
 
-async function BlogList() {
-  const blogPosts = await getCollection('blog');
+import React, { useState } from 'react';
+
+type BlogListProps = {
+  blogPosts: any[]; 
+}
+
+function BlogList(props: BlogListProps) {
+  const [page, setPage] = React.useState(1);
+
+  const blogPosts = props.blogPosts || [];
+
   blogPosts.sort((a, b) => {
     return a.data.order - b.data.order;
   })
 
   function nextPage() {
     // Logic to handle pagination
-    console.log("Next page not implemented yet");
+    setPage((prevPage) => {
+      const totalPages = Math.ceil(blogPosts.length / 5);
+      return prevPage < totalPages ? prevPage + 1 : prevPage;
+    });
   }
 
   function previousPage() {
@@ -23,6 +34,10 @@ async function BlogList() {
     // paginate the blog posts to show only the first 5
     paginationControls = <>
       <div className={styles.paginationControls}>
+        <span className={styles.pageInfo}>
+          Page {page} of {Math.ceil(blogPosts.length / 5)}
+        </span>
+
         <button className={styles.button} onClick={previousPage}>
            &lt;
         </button>

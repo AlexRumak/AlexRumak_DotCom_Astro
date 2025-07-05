@@ -1,0 +1,39 @@
+.tableOfContents {
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--primary-bar-color);
+}
+
+.tableOfContents li {
+  list-style: none;
+  font-size: 1.3rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.numbering {
+  margin-right: 1rem;
+}
+
+.toc0 {
+  box-shadow: 
+    inset 0 0 0 20px var(--accent-text-background-color),
+    -40px 0 var(--accent-text-background-color);
+}
+
+.tableOfContents a {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.tableOfContents .toc0:hover {
+  box-shadow: 
+    inset 0 0 0 20px var(--selected-text-background-color),
+    -40px 0 var(--selected-text-background-color); 
+}
+
+.tableOfContents .toc1:hover {
+  box-shadow: 
+    inset 0 0 0 20px var(--selected-text-background-color),
+    -40px 0 var(--selected-text-background-color); 
+}

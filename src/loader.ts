@@ -134,7 +134,7 @@ export function blogLoader(): Loader {
           return;
         }
 
-        // remove header from content - kind of hacky
+        // remove top-level header from content - kind of hacky
         let replacedContent = content.replace(/^[#].*[\n\r]/, '');
         replacedContent = replaceRelativePathsWithAssetPath(replacedContent);
        

@@ -3,6 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import AboutMe from "../components/content/AboutMe";
 import ContactMe from "../components/content/ContactMe";
 import BlogList from "../components/blog/BlogList";
+
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
 ---
 
 <BaseLayout>
@@ -17,7 +21,7 @@ import BlogList from "../components/blog/BlogList";
 		</div>
 
 		<div class="sideCardContainer">
-			<BlogList />
+			<BlogList blogPosts={blogPosts} client:load />
 		</div>
 	</div>
 

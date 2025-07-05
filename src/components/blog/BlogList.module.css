@@ -39,6 +39,11 @@
   display: flex;
   flex-direction: row;
   justify-content: right;
+  align-items: center;
+}
+
+.paginationControls span {
+  flex-grow: 1;
 }
 
 .button {
@@ -48,4 +53,6 @@
   border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+
+  pointer-events: auto;
 }
