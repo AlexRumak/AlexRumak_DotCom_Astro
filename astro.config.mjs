@@ -19,11 +19,15 @@ export default defineConfig({
         targets: [
           {
             src: './content/**/*.png',
-            dest: 'assets/blog/'
+            dest: 'content/blog/'
           },
           {
             src: './content/**/*.gif',
-            dest: 'assets/blog/'
+            dest: 'content/blog/'
+          },
+          {
+            src: './content/blog/**/*.md',
+            dest: 'content/blog/'
           }
         ]
       })

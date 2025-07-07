@@ -89,7 +89,7 @@ function extractImages(lines: string[], basePath: string): string[] {
 }
 
 function replaceRelativePathsWithAssetPath(contents: string): string {
-  return contents.replaceAll("](./", "](/assets/blog/"); // Should work in 99.999999% of cases.
+  return contents.replaceAll("](./", "](/content/blog/"); // Should work in 99.999999% of cases.
 }
 
 interface ExtractedContent {
@@ -158,11 +158,14 @@ async function syncData(
 
   store.clear();
 
-  response.forEach(async (filePath) => {
+  const results = await Promise.all(response.map(async (filePath) => {
     const { id, tags, title, createdDate, lastModifiedDate, order, content } = await extractContent(filePath);
 
     if (id === undefined || content === undefined) {
-      return;
+      return {
+        id: id,
+        status: "skipped"
+      };
     }
 
     const rendered = await renderMarkdown(content);
@@ -182,7 +185,12 @@ async function syncData(
       },
       rendered: rendered,
     });
-  });
+
+    return {
+      id: id,
+      status: "synced"
+    }
+  }));
 }
 
 async function resynceData(
@@ -224,7 +232,7 @@ async function resynceData(
 }
 
 export function blogLoader(): Loader {
-  const files = glob("./content/blog/**/*.md");
+  const files = glob("content/blog/**/*.md");
 
   return {
     name: "blogLoader",
